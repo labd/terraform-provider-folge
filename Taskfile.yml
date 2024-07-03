@@ -1,0 +1,46 @@
+version: '3'
+
+tasks:
+  build-local:
+    cmds:
+      - go build -o terraform-provider-folge_{{ .VERSION }}
+      - mkdir -p ~/.terraform.d/plugins/registry.terraform.io/labd/folge/{{ .VERSION }}/{{ .PLATFORM }}/
+      - mv terraform-provider-folge_{{ .VERSION }} ~/.terraform.d/plugins/registry.terraform.io/labd/folge/{{ .VERSION }}/{{ .PLATFORM }}/terraform-provider-folge_v{{ .VERSION }}
+      - cmd: codesign --deep --force -s - ~/.terraform.d/plugins/registry.terraform.io/labd/folge/{{ .VERSION }}/{{ .PLATFORM }}/terraform-provider-folge_v{{ .VERSION }}
+        platforms: [ darwin ]
+    vars:
+      VERSION: 99.0.0
+      PLATFORM:
+        sh: echo "$(go env GOOS)_$(go env GOARCH)"
+
+  format:
+    cmds:
+      - go fmt ./...
+
+  test:
+    cmds:
+      - go test -v ./...
+
+  docs:
+    cmds:
+      - go generate ./...
+
+  coverage-html:
+    cmds:
+      - go test -race -coverprofile=coverage.txt -covermode=atomic -coverpkg=./... ./...
+      - go tool cover -html=coverage.txt
+
+  coverage:
+    cmds:
+      - go test -race -coverprofile=coverage.txt -covermode=atomic -coverpkg=./... ./...
+      - go tool cover -func=coverage.txt
+
+  testacc:
+    cmds:
+      - TF_ACC=1 FOLGE_URL=https://localhost:8000 FOLGE_CLIENT_ID=x FOLGE_CLIENT_SECRET=y go test ./...
+
+
+  sdk:
+    cmds:
+      - curl localhost:8000/api/openapi.yaml > openapi.yaml
+      - go run github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen --config oapi-config.yaml ./openapi.yaml

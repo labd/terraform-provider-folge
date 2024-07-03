@@ -1,0 +1,7 @@
+package: folge
+generate:
+  models: true
+  client: true
+output: internal/folge/main.gen.go
+output-options:
+  skip-prune: true

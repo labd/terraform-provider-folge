@@ -1,0 +1,5 @@
+openapi.yaml
+*.tfstate
+*.backup
+*.lock.hcl
+**/.terraform/*
