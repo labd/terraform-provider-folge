@@ -51,6 +51,7 @@ resource "folge_datasource" "test" {
 }
 
 resource "folge_check_http_status" "test" {
+  application_id = folge_application.test.id
   datasource_id = folge_datasource.test.id
 
   crontab     = "*/5 * * * *"
@@ -60,12 +61,14 @@ resource "folge_check_http_status" "test" {
 
 
 resource "folge_check_json_property" "test" {
+  application_id = folge_application.test.id
   datasource_id = folge_datasource.test.id
 
   crontab    = "*/5 * * * *"
-  label      = "My check"
+  name       = "My check"
   path       = "authentication.failed"
-  operator   = "HAS_VALUE"
+  operator   = "eq"
+  datatype   = "bool"
   value_bool = false
 }
 
