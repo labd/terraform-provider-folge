@@ -1,13 +1,13 @@
+version: "2"
+
 linters:
   disable-all: true
   enable:
   - asciicheck
   - bodyclose
-  - contextcheck
   - cyclop
   - errcheck
   - exhaustive
-  - exportloopref
   - forcetypeassert
   - goimports
   - gosimple
@@ -15,7 +15,6 @@ linters:
   - ineffassign
   - predeclared
   - staticcheck
-  - tenv
   - typecheck
   - unused
   - whitespace
