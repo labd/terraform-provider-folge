@@ -259,7 +259,6 @@ func (r *checkHttpStatusResource) Delete(ctx context.Context, req resource.Delet
 		)
 		return
 	}
-
 }
 
 func (r *checkHttpStatusResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {

@@ -256,7 +256,6 @@ func (r *dataSourceResource) Delete(ctx context.Context, req resource.DeleteRequ
 		)
 		return
 	}
-
 }
 
 func (r *dataSourceResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
