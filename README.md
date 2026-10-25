@@ -1,7 +1,6 @@
 # Folge Terraform Provider
 
 [![Test status](https://github.com/labd/terraform-provider-folge/workflows/Run%20Tests/badge.svg)](https://github.com/labd/terraform-provider-folge/actions?query=workflow%3A%22Run+Tests%22)
-[![codecov](https://codecov.io/gh/LabD/terraform-provider-folge/branch/master/graph/badge.svg)](https://codecov.io/gh/LabD/terraform-provider-folge)
 [![Go Report Card](https://goreportcard.com/badge/github.com/labd/terraform-provider-folge)](https://goreportcard.com/report/github.com/labd/terraform-provider-folge)
 
 The Terraform Folge provider allows you to configure your
