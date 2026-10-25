@@ -25,10 +25,8 @@ jobs:
           version: v2.15.0
           args: --issues-exit-code=0 --timeout=5m
 
-      # - name: Run tests
-      #   run: go test -race -v ./...
-      #   env:
-      #     TF_ACC: 1
+      - name: Run tests
+        run: go test -race -v ./...
 
   changie:
     runs-on: ubuntu-latest
