@@ -291,7 +291,6 @@ func (r *checkJsonPropertyResource) Delete(ctx context.Context, req resource.Del
 		)
 		return
 	}
-
 }
 
 func (r *checkJsonPropertyResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {

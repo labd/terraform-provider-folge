@@ -232,7 +232,6 @@ func (r *applicationResource) Delete(ctx context.Context, req resource.DeleteReq
 		)
 		return
 	}
-
 }
 
 func (r *applicationResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {

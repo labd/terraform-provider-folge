@@ -102,7 +102,7 @@ func (m *CheckJsonPropertyModel) fromRemote(i folge.Check, applicationId int, da
 			var dst bool
 			err := json.Unmarshal([]byte(d.Value), &dst)
 			if err != nil {
-				return fmt.Errorf("Invalid bool value: %s", err)
+				return fmt.Errorf("invalid bool value: %s", err)
 			}
 			m.ValueBoolean = types.BoolValue(dst)
 
@@ -110,7 +110,7 @@ func (m *CheckJsonPropertyModel) fromRemote(i folge.Check, applicationId int, da
 			var dst int64
 			err := json.Unmarshal([]byte(d.Value), &dst)
 			if err != nil {
-				return fmt.Errorf("Invalid int value: %s", err)
+				return fmt.Errorf("invalid int value: %s", err)
 			}
 			m.ValueInt = types.Int64Value(dst)
 
@@ -118,7 +118,7 @@ func (m *CheckJsonPropertyModel) fromRemote(i folge.Check, applicationId int, da
 			var dst string
 			err := json.Unmarshal([]byte(d.Value), &dst)
 			if err != nil {
-				return fmt.Errorf("Invalid datetime value: %s", err)
+				return fmt.Errorf("invalid datetime value: %s", err)
 			}
 			m.ValueString = types.StringValue(dst)
 
@@ -126,7 +126,7 @@ func (m *CheckJsonPropertyModel) fromRemote(i folge.Check, applicationId int, da
 			var dst string
 			err := json.Unmarshal([]byte(d.Value), &dst)
 			if err != nil {
-				return fmt.Errorf("Invalid datetime value: %s", err)
+				return fmt.Errorf("invalid datetime value: %s", err)
 			}
 			m.ValueDateTime = types.StringValue(dst)
 
