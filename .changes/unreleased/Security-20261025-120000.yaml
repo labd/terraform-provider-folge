@@ -1,3 +1,0 @@
-kind: Security
-body: Update dependencies to resolve security advisories (kin-openapi, oapi-codegen, golang.org/x/crypto, golang.org/x/net, grpc, circl)
-time: 2026-10-25T12:00:00.000000+02:00
