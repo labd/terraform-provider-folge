@@ -1,6 +1,12 @@
 name: Run Tests
 
-on: [ push ]
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
 
 jobs:
   test:
@@ -8,10 +14,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
 
       - uses: hashicorp/setup-terraform@5e8dbf3c6d9deaf4193ca7a8fb23f2ac83bb6c85 # v4.0.0
         with:
-          terraform_version: 1.4.6
+          terraform_version: '1.17.*'
           terraform_wrapper: false
 
       - name: Set up Go
@@ -27,6 +35,20 @@ jobs:
 
       - name: Run tests
         run: go test -race -v ./...
+
+  govulncheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version-file: go.mod
+          check-latest: true
+          cache: false
+      - name: Run govulncheck
+        run: go run golang.org/x/vuln/cmd/govulncheck@v1.9.0 ./...
 
   changie:
     runs-on: ubuntu-latest
